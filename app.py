@@ -11,7 +11,7 @@ load_dotenv()
 BOT_TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-URL_TO_MONITOR = "http://127.0.0.1:5500/webpage/DataAnnotation.html"
+URL_TO_MONITOR = "http://127.0.0.1:5500/webpage/DataAnnotationReplica.html"
 # Real URL: "https://app.dataannotation.tech/workers/projects"
 
 def parse_projects(html_content):
