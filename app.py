@@ -19,8 +19,6 @@ def parse_projects(html_content):
     project_root = soup.find('div', id='workers/WorkerProjectsTable-hybrid-root')
     
     if not project_root:
-        # ⚠️ Silent failure risk: If the site structure changes, we might return []
-        # and accidentally clear our "seen" list.
         print("Warning: Could not find project table. Possible login issue or layout change.")
         return None # Return None instead of [] to signal error
 
@@ -58,7 +56,6 @@ def check_for_new_projects(current_projects):
     with open(filename, 'w') as f:
         json.dump(list(current_ids), f)
 
-    # --- LOGIC FIX ---
     if is_first_run:
         print(f"-> System initialized. Memorized {len(current_ids)} existing projects. No alert sent.")
         return [] # Return empty list so no alert is triggered
@@ -78,8 +75,7 @@ def check_for_new_projects(current_projects):
 def send_telegram_alert(project_names):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     
-    # Create a nice formatted message
-    msg_text = f"🚨 <b>New Projects Found!</b>\n\n"
+    msg_text = f"<b>New Projects Found!</b>\n\n"
     for name in project_names:
         msg_text += f"• {name}\n"
     
