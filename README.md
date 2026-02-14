@@ -1,4 +1,4 @@
-# 🔍 DataAnnotation Project Monitor
+# DataAnnotation Project Monitor
 
 A lightweight, passive Python utility designed to monitor the DataAnnotation dashboard for new project availability and send instant notifications via Telegram.
 
